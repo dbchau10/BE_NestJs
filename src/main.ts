@@ -6,7 +6,8 @@ import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { TransformInterceptor } from './core/transform.interceptor';
-import cookieParser from 'cookie-parser';
+// import cookieParser from 'cookie-parser';
+import cookieParser = require('cookie-parser');
 require('dotenv').config()
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

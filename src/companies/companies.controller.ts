@@ -15,8 +15,8 @@ export class CompaniesController {
 
   @Get()
   @ResponseMessage('fetch list company')
-  findAll(@Query("page") currentPage:string,
-  @Query("limit") limit:string,
+  findAll(@Query("current") currentPage:string,
+  @Query("pageSize") limit:string,
   @Query() qs:string
   ) {
     // return {qs}

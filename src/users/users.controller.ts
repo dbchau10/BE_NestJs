@@ -6,7 +6,7 @@ import { testGuard } from './test.guard';
 import { IS_PUBLIC_KEY, Public, ResponseMessage, User } from 'src/decorator/customize';
 import { IUser } from './users.interface';
 
-@Controller('users')
+@Controller()
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

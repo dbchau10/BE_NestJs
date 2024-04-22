@@ -19,15 +19,15 @@ export class CompaniesService {
     });
   }
 
-  async findAll(currentPage: number, limit: number, qs: string) {
+  async findAll(current: number, pageSize: number, qs: string) {
     const { filter, sort, projection, population } = aqp(qs);
-    delete filter.page;
-    delete filter.limit;
+    delete filter.current;
+    delete filter.pageSize;
 
     console.log(sort);
     
-    let offset = (+currentPage - 1) * (+limit);
-    let defaultLimit = +limit ? +limit : 10;
+    let offset = (+current - 1) * (+pageSize);
+    let defaultLimit = +pageSize ? +pageSize : 10;
     const totalItems = (await this.companyModel.find(filter)).length;
     const totalPages = Math.ceil(totalItems / defaultLimit);
     // if (isEmpty(sort)) {
@@ -43,8 +43,8 @@ export class CompaniesService {
 
     return {
       meta:{
-        current:currentPage,
-        pageSize:limit,
+        current:current,
+        pageSize:pageSize,
         pages:totalPages,
         total:totalItems
       },

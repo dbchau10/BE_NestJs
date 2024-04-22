@@ -25,6 +25,12 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor(reflector));
   app.use(cookieParser());
+  app.enableCors({
+    "origin": true,
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    credentials:true
+  });
   await app.listen(process.env.PORT);
 }
 bootstrap();

@@ -13,7 +13,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @ResponseMessage("User Login")
   
-  @Post('/login')
+  @Post('auth/login')
   @ResponseMessage("User Login")
   async handleLogin(@Req() req ,
   @Res({ passthrough: true }) response: Response) {
